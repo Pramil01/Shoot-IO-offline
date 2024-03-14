@@ -1,0 +1,20 @@
+{
+  "name": "shoot-io-offline",
+  "productName": "Shoot-io-offline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "Pramil Kesarwani",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "electron": "^29.1.4",
+    "express": "^4.18.3",
+    "socket.io": "^4.7.4",
+    "toastify-js": "^1.12.0"
+  }
+}
