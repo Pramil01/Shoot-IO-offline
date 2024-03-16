@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self'" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg=="
+    />
     <link rel="stylesheet" href="style.css" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"
@@ -16,33 +19,40 @@
     <title>IO Game</title>
   </head>
   <body>
-    <header id="head1">
-      <h1>Welcome To Shoot IO 🔫</h1>
-      <div class="gameCode">
-        <p class="text">Game Code : <span id="code"></span></p>
-        <label for="codeInput" class="text"
-          >Or Join Game By Entering Code Here :</label
-        >
-        <div class="join">
-          <input
-            placeholder="Enter Game Code Here"
-            type="text"
-            id="codeInput"
-          />
-          <button
-            class="btn"
-            onclick="startGame(false)"
-            onmouseover="glitchSound()"
-          >
-            Join
-          </button>
-        </div>
+    <div id="landing">
+      <div class="nameField">
+        <label for="name">Choose your name:</label>
+        <input placeholder="Enter Your Name Here !!!" type="text" id="name" />
       </div>
-    </header>
-    <header id="head2" class="hidden">
-      <h1>Game Started...</h1>
-    </header>
-    <canvas class="canvas" id="canvas"></canvas>
+      <div class="becomeHost">
+        <button id="hostGame">Host Game</button>
+        <p>-Or-</p>
+        <div class="players" id="hosts"></div>
+      </div>
+    </div>
+    <div id="game" class="hidden">
+      <header id="head1">
+        <h1>Welcome To Shoot IO 🔫</h1>
+        <div class="gameCode">
+          <p class="text">Game Code : <span id="code"></span></p>
+          <label for="codeInput" class="text"
+            >Or Join Game By Entering Code Here :</label
+          >
+          <div class="join">
+            <input
+              placeholder="Enter Game Code Here"
+              type="text"
+              id="codeInput"
+            />
+            <button class="btn" id="startGame">Join</button>
+          </div>
+        </div>
+      </header>
+      <header id="head2" class="hidden">
+        <h1>Game Started...</h1>
+      </header>
+      <canvas class="canvas" id="canvas"></canvas>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
