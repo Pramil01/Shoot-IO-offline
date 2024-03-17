@@ -44,14 +44,13 @@ function searchHosts(devices) {
 }
 
 function showAvailableHosts() {
-  console.log("show Called");
   let content = "";
   if (hosts.length === 0) {
     content += "<p class='noHost'>No available hosts at the present !!!</p>";
   } else {
     content += "<div class='hostList'>";
     hosts.forEach((host) => {
-      content += `<p class='hostItem'>Host Name = ${host} <button onclick='joinGame(${host})'>Join</button></p>`;
+      content += `<p class='hostItem'>Host Name = ${host} <button onclick='runGame(${host})'>Join</button></p>`;
     });
     content += "</div>";
   }
@@ -70,10 +69,8 @@ function hostGame() {
     name,
   });
 
-  document.getElementById("landing").classList.add("hidden");
-  document.getElementById("game").classList.remove("hidden");
-  initialize();
-  runGame();
+  let ip = address.getIpAddress();
+  runGame(ip);
 }
 
 function initialize() {
@@ -91,8 +88,10 @@ function initialize() {
   ctx.fillRect(xg, yg, 10, 10);
 }
 
-function runGame() {
-  let ip = address.getIpAddress();
+function runGame(ip) {
+  initialize();
+  document.getElementById("landing").classList.add("hidden");
+  document.getElementById("game").classList.remove("hidden");
 
   // Game Logic
   socket = io(`ws://${ip}:5000`);
